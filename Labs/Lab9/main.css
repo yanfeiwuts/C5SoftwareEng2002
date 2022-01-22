@@ -1,0 +1,88 @@
+/* these are style definitions for the html content of main page*/
+/*style for main html body*/
+body {
+    padding-top: 80px;
+    background: url('../images/background_main.jpg') no-repeat center center fixed;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+/*styles for playing trailer*/
+#trailer .modal-dialog {
+    margin-top: 200px;
+    width: 640px;
+    height: 480px;
+}
+.hanging-close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    z-index: 9001;
+}
+#trailer-video {
+    width: 100%;
+    height: 100%;
+}
+.scale-media {
+    padding-bottom: 56.25%;
+    position: relative;
+}
+.scale-media iframe {
+    border: none;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: white;
+}
+/*styles for movie tiles' content*/
+.movie-tile {
+    position: relative;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    box-shadow: 6px 6px 8px rgb(35, 35, 35);
+}
+/*overlay style to show movie's information on hover*/
+.tile-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgb(100, 100, 100);
+}
+.movie-tile:hover .tile-overlay{
+    cursor: pointer;
+    opacity: 0.9;
+}
+.overlay-text {
+    color: white;
+    font-size: 16px;
+    line-height: 24px;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    transform: translate(-10%, -10%);
+    -ms-transform: translate(-10%, -10%);
+    text-align: left;
+}
+/* footer style*/
+footer {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 10px;
+    color: rgba(239, 215, 174, 0.6);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    letter-spacing: 0.2em;
+    width: 100%;
+    margin: auto;
+    text-align: center
+}

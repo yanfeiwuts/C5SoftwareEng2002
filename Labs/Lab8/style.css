@@ -1,0 +1,24 @@
+body{
+  background-image: url("tips.png");
+  align-items:center;
+    align-content:center;
+}
+h1,h2,h3{
+  background-color:gray;
+  opacity: 80% ;
+  width:200px;
+  text-align:left;
+}
+.hd{
+  background-color:greenyellow;
+  opacity: 50%;
+  color:rebeccapurple;
+  width:100px;
+  text-align: center;
+}
+p{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.first{
+  
+}

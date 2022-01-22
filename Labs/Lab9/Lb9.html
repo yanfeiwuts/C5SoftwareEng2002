@@ -1,0 +1,488 @@
+
+   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Favorite Movies</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+    <script>
+      $(document).ready(function() {
+      });
+
+      function saveToLocalStorage(){
+        var tempTitle = document.getElementById("title").value;
+
+        if(localStorage.getItem(tempTitle) === null){ //checks if the movie title is not already in the database  
+
+            //gets and sets the values from the user form
+            var tempYear = document.getElementById("year").value;
+            var tempDirector = document.getElementById("director").value;
+            var tempPoster = document.getElementById("poster").value;
+            var key = tempTitle;
+            var values = [tempYear, tempDirector, tempPoster];
+
+            //sets values to localStorage
+            localStorage.setItem(key, JSON.stringify(values));
+
+            appendToTable(key, values)
+
+        }
+    }
+
+    function appendToTable(key, values){
+        var table = document.getElementById("localTable");
+        var row = table.insertRow(1); //inserts a new row
+
+        //inserts four empty cells 
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+
+        //sets each cell to the corresponding value
+        cell1.innerHTML = key;
+        cell2.innerHTML = values[0];
+        cell3.innerHTML = values[1];
+        cell4.innerHTML = values[2];
+
+        showLocalStorage();
+
+        
+    }
+
+    //traverses through the existing values in localStorage and adds them to the table
+    function populateExisting(){
+        for(var i =0; i < localStorage.length; i++){
+            appendToTable(localStorage.key(i), JSON.parse(localStorage.getItem(localStorage.key(i))) )
+        }
+    }
+
+    //displays localStorage values in console
+    function showLocalStorage(){
+        var i;
+        console.log("local storage");
+        console.log(localStorage.length);
+
+        for (i = 0; i < localStorage.length; i++)   {
+            console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
+        }
+    }
+
+    //clears all values in localStorage and table
+    function clearLocalStorage(){
+        $("#localTable tbody tr").remove()
+        localStorage.clear();
+        showLocalStorage();
+    }
+
+</script>
+</head>
+
+<body onload="populateExisting();">
+   <body>
+    <h1>Favorite Movies List </h1>
+
+    <div class="form">
+        <h4>Enter the information below and click submit to store it into the database.</h4>
+        Movie title:
+        <input id="title" placeholder="Enter movie title" /> 
+        Year of release:
+        <input id="year" placeholder="Enter year of release" /> 
+        Director:
+        <input id="director" placeholder="Enter director" /> 
+        Poster URL:
+        <input id="poster" placeholder="Enter poster URL" />
+
+        <input type="submit" value="Submit" onclick="saveToLocalStorage()" />
+    </div>
+
+    <div id="localStorageDiv" class="float">
+        <table id="localTable" border="1">
+            <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Year of Release</th>
+                  <th>Director</th>
+                  <th>Poster</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr id ="tableROW">
+              </tr>
+          </tbody>
+      </table>
+      <input type="submit" value="Clear database" onclick="clearLocalStorage()" />
+
+  </div>
+
+</body>
+</body>
+<div class="col-sm-5 col-md-4 col-lg-3 movie-tile text-center"
+  data-trailer-youtube-id="bLvqoHBptjg"
+  data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg" width="220" height="342" alt="Forrest Gump">
+    <div class="tile-overlay">
+    <div class="overlay-text">
+      <h3 style="color:white">Forrest Gump</h3>
+      <p>
+        1994 |  Drama, Romance | Rated: PG-13<br><br>
+        Director: Robert Zemeckis<br>
+        Cast: Tom Hanks, Robin Wright, Gary Sinise<br>
+        <small> Stroyline: The presidencies of Kennedy and Johnson, Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.</small>
+      </p>
+    </div>
+  </div>
+</div> </div>
+<div class="col-sm-5 col-md-4 col-lg-3 movie-tile text-center"
+  data-trailer-youtube-id="WFJgUm7iOKw"
+  data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/b8/A_Beautiful_Mind_Poster.jpg" width="220" height="342" alt="A Beautiful Mind">
+    <div class="tile-overlay">
+    <div class="overlay-text">
+      <h3 style="color:white">A Beautiful Mind</h3>
+      <p>
+        2001 | Biography, Drama | Rated: PG-13<br><br>
+        Director: Ron Howard<br>
+        Cast: Russell Crowe, Ed Harris, Jennifer Connelly<br>
+        <small> Stroyline: After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish.</small>
+      </p>
+    </div>
+  </div>
+<div class="col-sm-5 col-md-4 col-lg-3 movie-tile text-center"
+  data-trailer-youtube-id="WFJgUm7iOKw"
+  data-toggle="modal" data-target="#trailer">
+    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.imdb.com%2Ftitle%2Ftt0454921%2F&psig=AOvVaw0eBq2OYA0lzqPGJHiqYOpl&ust=1642114859276000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLCW49morfUCFQAAAAAdAAAAABAD" width="220" height="342" alt="Pursuit of happiness">
+    <div class="tile-overlay">
+    <div class="overlay-text">
+      <h3 style="color:white">A Beautiful Mind</h3>
+      <p>
+        2001 | Biography, Drama | Rated: PG-13<br><br>
+        Director: Ron Howard<br>
+        Cast: Russell Crowe, Ed Harris, Jennifer Connelly<br>
+        <small> Stroyline: After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish.</small>
+      </p>
+    </div>
+  </div>
+</html>
+
+
+
+
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>扫一扫（封面/电影海报）</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/扫一扫（封面_电影海报）_3/styles.css" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/prototypePre.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/prototypePost.js"></script>
+    <script src="files/扫一扫（封面_电影海报）_3/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- bg (矩形) -->
+      <div id="u4177" class="ax_default box_2" data-label="bg">
+        <div id="u4177_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4178" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- navigation_Bar (矩形) -->
+      <div id="u4179" class="ax_default box_3" data-label="navigation_Bar">
+        <div id="u4179_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4180" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4181" class="ax_default label">
+        <div id="u4181_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4182" class="text">
+          <p><span>封面/电影海报</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u4183" class="ax_default" data-left="66" data-top="602" data-width="30" data-height="51">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4184" class="ax_default label">
+          <div id="u4184_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4185" class="text">
+            <p><span>扫码</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (图片) -->
+        <div id="u4186" class="ax_default _图片">
+          <img id="u4186_img" class="img " src="images/扫一扫（封面_电影海报）/u1999.png"/>
+          <!-- Unnamed () -->
+          <div id="u4187" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u4188" class="ax_default" data-left="137" data-top="602" data-width="30" data-height="51">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4189" class="ax_default label">
+          <div id="u4189_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4190" class="text">
+            <p><span>封面</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (图片) -->
+        <div id="u4191" class="ax_default _图片">
+          <img id="u4191_img" class="img " src="images/扫一扫（封面_电影海报）/u2004.png"/>
+          <!-- Unnamed () -->
+          <div id="u4192" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u4193" class="ax_default" data-left="209" data-top="602" data-width="30" data-height="51">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4194" class="ax_default label">
+          <div id="u4194_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4195" class="text">
+            <p><span>街景</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (图片) -->
+        <div id="u4196" class="ax_default _图片">
+          <img id="u4196_img" class="img " src="images/扫一扫（二维码_条码）/u1949.png"/>
+          <!-- Unnamed () -->
+          <div id="u4197" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u4198" class="ax_default" data-left="280" data-top="602" data-width="30" data-height="51">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4199" class="ax_default label">
+          <div id="u4199_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4200" class="text">
+            <p><span>翻译</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (图片) -->
+        <div id="u4201" class="ax_default _图片">
+          <img id="u4201_img" class="img " src="images/扫一扫（二维码_条码）/u1954.png"/>
+          <!-- Unnamed () -->
+          <div id="u4202" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4203" class="ax_default box_1">
+        <div id="u4203_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4204" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u4205" class="ax_default" data-left="159" data-top="446" data-width="57" data-height="41">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4206" class="ax_default label">
+          <div id="u4206_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4207" class="text">
+            <p><span>轻触照亮</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (图片) -->
+        <div id="u4208" class="ax_default _图片">
+          <img id="u4208_img" class="img " src="images/扫一扫（二维码_条码）/u1963.png"/>
+          <!-- Unnamed () -->
+          <div id="u4209" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (垂直线) -->
+      <div id="u4210" class="ax_default line">
+        <img id="u4210_img" class="img " src="images/扫一扫（二维码_条码）/u1965.png"/>
+        <!-- Unnamed () -->
+        <div id="u4211" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (垂直线) -->
+      <div id="u4212" class="ax_default line">
+        <img id="u4212_img" class="img " src="images/扫一扫（二维码_条码）/u1965.png"/>
+        <!-- Unnamed () -->
+        <div id="u4213" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (垂直线) -->
+      <div id="u4214" class="ax_default line">
+        <img id="u4214_img" class="img " src="images/扫一扫（二维码_条码）/u1965.png"/>
+        <!-- Unnamed () -->
+        <div id="u4215" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (垂直线) -->
+      <div id="u4216" class="ax_default line">
+        <img id="u4216_img" class="img " src="images/扫一扫（二维码_条码）/u1965.png"/>
+        <!-- Unnamed () -->
+        <div id="u4217" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (水平线) -->
+      <div id="u4218" class="ax_default line">
+        <img id="u4218_img" class="img " src="images/扫一扫（二维码_条码）/u1973.png"/>
+        <!-- Unnamed () -->
+        <div id="u4219" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (水平线) -->
+      <div id="u4220" class="ax_default line">
+        <img id="u4220_img" class="img " src="images/扫一扫（二维码_条码）/u1973.png"/>
+        <!-- Unnamed () -->
+        <div id="u4221" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (水平线) -->
+      <div id="u4222" class="ax_default line">
+        <img id="u4222_img" class="img " src="images/扫一扫（二维码_条码）/u1973.png"/>
+        <!-- Unnamed () -->
+        <div id="u4223" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (水平线) -->
+      <div id="u4224" class="ax_default line">
+        <img id="u4224_img" class="img " src="images/扫一扫（二维码_条码）/u1973.png"/>
+        <!-- Unnamed () -->
+        <div id="u4225" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u4226" class="ax_default ax_default_hidden" style="display:none; visibility: hidden" data-left="0" data-top="0" data-width="0" data-height="0">
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4227" class="ax_default label">
+          <div id="u4227_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4228" class="text">
+            <p><span>轻触关闭</span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (图片) -->
+        <div id="u4229" class="ax_default _图片">
+          <img id="u4229_img" class="img " src="images/扫一扫（二维码_条码）/u1984.png"/>
+          <!-- Unnamed () -->
+          <div id="u4230" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unnamed (矩形) -->
+      <div id="u4231" class="ax_default label">
+        <div id="u4231_div" class=""></div>
+        <!-- Unnamed () -->
+        <div id="u4232" class="text">
+          <p><span>将书、CD、电影海报放入框内，即可自动扫描</span></p>
+        </div>
+      </div>
+
+      <!-- saoMiaoXian (水平线) -->
+      <div id="u4233" class="ax_default line" data-label="saoMiaoXian">
+        <img id="u4233_img" class="img " src="images/扫一扫（封面_电影海报）/saomiaoxian_u2046.png"/>
+        <!-- Unnamed () -->
+        <div id="u4234" class="text" style="display:none; visibility: hidden">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (组合) -->
+      <div id="u4235" class="ax_default" data-left="10" data-top="31" data-width="86" data-height="21">
+
+        <!-- Unnamed (图片) -->
+        <div id="u4236" class="ax_default _图片">
+          <img id="u4236_img" class="img " src="images/详情/u372.png"/>
+          <!-- Unnamed () -->
+          <div id="u4237" class="text" style="display:none; visibility: hidden">
+            <p><span></span></p>
+          </div>
+        </div>
+
+        <!-- Unnamed (矩形) -->
+        <div id="u4238" class="ax_default label">
+          <div id="u4238_div" class=""></div>
+          <!-- Unnamed () -->
+          <div id="u4239" class="text">
+            <p><span>添加朋友</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+
