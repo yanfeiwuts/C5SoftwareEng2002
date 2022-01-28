@@ -1,0 +1,22 @@
+<!--html is the tag that creates a web page document-->
+<html>
+<!--head is the tag for metadata-->
+  <head>
+  <title>Lab 1</title>
+  </head>
+  <body bgcolor="lightgreen">
+    <h1>My first Website</h1>
+    <button type="button" onclick="myfunction()"> Click Me!</button>
+    <p id="demo" style="color:red;"><b>p1</b></p>
+    <script>
+      //create a function for bitton
+    function myfunction()
+      {
+        /*this will call the function
+        and rewrite html paragraph tag
+        */
+      document.getElementById("demo").innerHTML = "Hello Javascript!";
+      }
+    </script>  
+  </body>
+</html>
