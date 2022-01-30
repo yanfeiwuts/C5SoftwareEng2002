@@ -1,0 +1,55 @@
+h1{
+  background-color:whitesmoke;
+  text-align: center;
+}
+h2{
+  background-color:whitesmoke;
+  text-align: center;
+}
+
+
+/*Home cards*/
+.home-cards {
+  display: flex;
+}
+.home-cards> * {
+  flex-basis: 100%;
+}
+
+.home-cards div-inline{
+  display: inline;
+}
+
+.home-cards img {
+  width: 550px;
+  height:800px ;
+  margin-bottom: 20px;
+}
+
+.home-cards h3{
+  color:#eb8d13;
+  margin-bottom: 50px;
+  
+}
+
+.home-cards p{
+  
+  color: white;
+}
+
+.home-cards a {
+  display: inline-block;
+  padding-top: 10px;
+  color:blue
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.home-cards a:hover i{
+  margin-left: 10px;
+}
+
+
+
+
+
